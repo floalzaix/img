@@ -1,0 +1,52 @@
+version: "3.8"
+
+services:
+  # Backend FastAPI
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: watermark-backend
+    restart: unless-stopped
+    environment:
+      - PYTHONUNBUFFERED=1
+      - ENV=${ENV:-prod}
+      - PROD_CORS_ORIGINS=${PROD_CORS_ORIGINS:-https://img.floalz.fr}
+      - LOGGING_LEVEL=${LOGGING_LEVEL:-INFO}
+    volumes:
+      - ./backend/logs:/app/logs
+    networks:
+      - watermark-network
+
+  # Frontend Angular
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: watermark-frontend
+    restart: unless-stopped
+    networks:
+      - watermark-network
+
+  # Nginx Reverse Proxy
+  nginx:
+    image: nginx:alpine
+    container_name: watermark-nginx
+    restart: unless-stopped
+    ports:
+      - "${HTTP_PORT:-80}:80"
+      - "${HTTPS_PORT:-443}:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - backend
+      - frontend
+    networks:
+      - watermark-network
+
+networks:
+  watermark-network:
+    driver: bridge
+

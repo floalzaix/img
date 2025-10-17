@@ -1,0 +1,22 @@
+<div class="dropzone">
+  <ngx-file-drop
+    [accept]="'image/*'"
+    [multiple]="false"
+    (onFileDrop)="onFileDrop($event)"
+  >
+    <ng-template class="dropzone-template" ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+      <div class="dropzone-content" (click)="openFileSelector()" (keydown)="openFileSelector()">
+        @if (!filePreview() && !error()) {
+          <h1><ng-content /></h1>
+          <mat-icon>file_upload</mat-icon>
+          <h3>Glisser/Déposer le fichier ici ou cliquer pour choisir</h3>
+        } @else if (!error()) {
+          <img [src]="filePreview()" alt="File Preview" />
+        }
+        @if (error()) {
+          <p>{{ error() }}</p>
+        }
+      </div>
+    </ng-template>
+  </ngx-file-drop>
+</div>

@@ -1,0 +1,14 @@
+.error-422 {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.error-422 h1 {
+  font-size: 2rem;
+  font-weight: 600;
+}

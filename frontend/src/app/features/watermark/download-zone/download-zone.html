@@ -1,0 +1,11 @@
+<button class="download-button"
+  [disabled]="!watermarkService.photoFile() || !watermarkService.watermarkFile()"
+  (click)="download()"
+>
+  @if (isLoading()) {
+    <mat-spinner diameter="40"/>
+  } @else {
+    <mat-icon>download</mat-icon>
+    <span>Télécharger</span>
+  }
+</button>

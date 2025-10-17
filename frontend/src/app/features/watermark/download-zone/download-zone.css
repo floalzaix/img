@@ -1,0 +1,32 @@
+@media (max-width: 1150px) {
+  button:enabled {
+    color: white;
+    background: linear-gradient(45deg,rgb(255, 0, 0), rgb(255, 92, 247), rgb(38, 0, 255));
+    border: none;
+  }
+}
+
+button {
+  padding: 10px 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  border-radius: 7px;
+  background-color: transparent;
+  font-size: 16px;
+
+  cursor: pointer;
+}
+
+button:hover:enabled {
+  color: white;
+  background: linear-gradient(45deg,rgb(255, 0, 0), rgb(255, 92, 247), rgb(38, 0, 255));
+  border: none;
+}
+
+button:hover:disabled {
+  cursor: not-allowed;
+}
