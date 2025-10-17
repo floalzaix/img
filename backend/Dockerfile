@@ -26,10 +26,10 @@ WORKDIR /app
 
 # Copier les fichiers de configuration de Poetry
 COPY pyproject.toml ./
-COPY poetry.lock* ./
+COPY poetry.lock ./
 
 # Installer les dépendances
-RUN if [ -f poetry.lock ]; then poetry install --only=main; else poetry install --only=main --no-dev; fi && rm -rf $POETRY_CACHE_DIR
+RUN poetry install --only=main && rm -rf $POETRY_CACHE_DIR
 
 # Stage de production
 FROM python:3.12.10-slim as production
