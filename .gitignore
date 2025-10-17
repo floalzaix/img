@@ -97,7 +97,7 @@ celerybeat.pid
 
 # Environments
 .env
-.venv
+**/.venv
 env/
 venv/
 ENV/
@@ -309,9 +309,6 @@ lerna-debug.log*
 ehthumbs.db
 Thumbs.db
 
-# Docker
-.dockerignore
-
 # SSL certificates
 *.pem
 *.key
@@ -337,8 +334,6 @@ app.log
 *.sqlite3
 
 # Configuration files with sensitive data
-config/local.py
-config/production.py
 secrets.json
 
 # Personal files

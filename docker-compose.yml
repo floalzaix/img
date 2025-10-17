@@ -10,9 +10,6 @@ services:
     restart: unless-stopped
     environment:
       - PYTHONUNBUFFERED=1
-      - ENV=${ENV:-prod}
-      - PROD_CORS_ORIGINS=${PROD_CORS_ORIGINS:-https://img.floalz.fr}
-      - LOGGING_LEVEL=${LOGGING_LEVEL:-INFO}
     volumes:
       - ./backend/logs:/app/logs
     networks:

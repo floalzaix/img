@@ -39,7 +39,7 @@ class Settings(BaseSettings):
     )
 
     PROD_CORS_ORIGINS: List[str] = Field(
-        [],
+        ["*"],
         description="The origins allowed to access the app in production"
     )
 
@@ -58,7 +58,6 @@ class Settings(BaseSettings):
     #
     
     model_config = {
-        "env_file": ".env",
         "case_sensitive": True,
     }
 
