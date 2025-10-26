@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: "https://localhost/api"
+  apiUrl: "https://img.floalz.fr/api"
 };
